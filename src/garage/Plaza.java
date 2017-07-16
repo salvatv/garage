@@ -22,4 +22,11 @@ public class Plaza {
 		this.precio = precio;
 	}
 
+	@Override
+	public String toString() {
+		return "Plaza [cliente=" + cliente + ", precio=" + precio + "]";
+	}
+	
+	
+
 }
