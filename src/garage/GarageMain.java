@@ -82,12 +82,10 @@ public class GarageMain {
 		// 1 garage
 
 		Garage garage = new Garage();
-		
+
 		for (int i = 0; i < 1; i++) {
 			garage.setPlazas(plazas);
 		}
-
-		
 
 		System.out.println(garage);
 

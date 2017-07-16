@@ -1,24 +1,23 @@
 package garage;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Garage {
-	
-	private Plaza[] plazas;
 
-	public Plaza[] getPlazas() {
+	private List<Plaza> plazas;
+
+	public List<Plaza> getPlazas() {
 		return plazas;
 	}
 
-	public void setPlazas(Plaza[] plazas) {
+	public void setPlazas(List<Plaza> plazas) {
 		this.plazas = plazas;
 	}
 
 	@Override
 	public String toString() {
-		return "Garage [plazas=" + Arrays.toString(plazas) + "]";
+		return "Garage [plazas=" + plazas.size() + "]";
 	}
-	
-	
 
 }
