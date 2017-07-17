@@ -8,6 +8,8 @@ public class GarageMain {
 
 	static GarageController controlador;
 
+	static Garage garage;
+
 	public static void main(String[] args) {
 
 		inicializarComponentes();
@@ -24,15 +26,17 @@ public class GarageMain {
 		System.out.println("1.- Listar plazas libres");
 		System.out.println("2.- Listar plazas ocupadas");
 		System.out.println("3.- Ver ingresos");
-		System.out.println("4.- Reservar plaza");
-		System.out.println("5.-");
-		System.out.println("6.-");
+		System.out.println("4.- Listar clientes");
+		System.out.println("5.- Listar vehiculos");
+		System.out.println("6.- Reservar plaza");
 		System.out.println("7.-");
 		System.out.println("8.-");
 
 		Scanner in = new Scanner(System.in);
 
 		Integer opcion = in.nextInt();
+		
+		Boolean plazaa = false;
 
 		System.out.println("Ha elegido la opcion : " + opcion);
 
@@ -47,14 +51,45 @@ public class GarageMain {
 			controlador.listarPLazasOcupadas();
 
 			break;
+		case 3:
+
+		//	controlador.listarPLazasOcupadas();
+
+			break;
+		case 4:
+
+		//	controlador.listarPLazasOcupadas();
+
+			break;
+		case 5:
+
+	//		controlador.listarPLazasOcupadas();
+
+			break;
+		case 6:			
+			
+			plazaa = controlador.reservarPlaza();
+
+			break;
 
 		default:
 			break;
 		}
+		
+		if(plazaa && opcion == 3) {
+			System.out.println("Se ha reservado su plaza.");
+		}
+		else if (opcion == 3 ){
+			System.out.println("No hay plazas reservables.");
+		}		
+		
+		iniciarAplicacion();
 
 	}
 
 	private static void inicializarComponentes() {
+		
+		garage = new Garage();
 
 		// inicializar los componentes de la app
 
@@ -85,13 +120,13 @@ public class GarageMain {
 
 		}
 
-		// 5 vehiculos
+		// 4 vehiculos
 
-		Vehiculo coche = new Vehiculo();
+		// Vehiculo coche = new Vehiculo();
 
-		coche.setMatricula("12334");
+		// coche.setMatricula("12334");
 
-		vehiculos.add(coche);
+		// vehiculos.add(coche);
 
 		// System.out.println("coche5:" + coche);
 
@@ -136,9 +171,7 @@ public class GarageMain {
 
 		}
 
-		// 1 garage
-
-		Garage garage = new Garage();
+		// 1 garage		
 
 		for (int i = 0; i < 1; i++) {
 			garage.setPlazas(plazas);
@@ -148,6 +181,10 @@ public class GarageMain {
 
 		controlador = new ControladorGarageConArrays();
 
+	}
+
+	public static Garage getGarage() {
+		return garage;
 	}
 
 }

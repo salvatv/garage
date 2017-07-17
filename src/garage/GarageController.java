@@ -2,7 +2,7 @@ package garage;
 
 public interface GarageController {
 
-	Plaza[] listarPlazasLibres();
-	Plaza[] listarPLazasOcupadas();
-	
+	void listarPlazasLibres();
+	void listarPLazasOcupadas();
+	boolean reservarPlaza();
 }
