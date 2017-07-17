@@ -14,6 +14,9 @@ public class Garage {
 	public void setPlazas(List<Plaza> plazas) {
 		this.plazas = plazas;
 	}
+	
+	
+	
 
 	@Override
 	public String toString() {

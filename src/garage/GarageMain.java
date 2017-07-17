@@ -2,12 +2,55 @@ package garage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class GarageMain {
+
+	static GarageController controlador;
 
 	public static void main(String[] args) {
 
 		inicializarComponentes();
+
+		// iniciar aplicacion o listar menu
+
+		iniciarAplicacion();
+
+	}
+
+	private static void iniciarAplicacion() {
+
+		System.out.println("welcome");
+		System.out.println("1.- Listar plazas libres");
+		System.out.println("2.- Listar plazas ocupadas");
+		System.out.println("3.- Ver ingresos");
+		System.out.println("4.- Reservar plaza");
+		System.out.println("5.-");
+		System.out.println("6.-");
+		System.out.println("7.-");
+		System.out.println("8.-");
+
+		Scanner in = new Scanner(System.in);
+
+		Integer opcion = in.nextInt();
+
+		System.out.println("Ha elegido la opcion : " + opcion);
+
+		switch (opcion) {
+		case 1:
+
+			controlador.listarPlazasLibres();
+
+			break;
+		case 2:
+
+			controlador.listarPLazasOcupadas();
+
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
@@ -37,8 +80,8 @@ public class GarageMain {
 
 			clientes.add(cliente);
 
-			System.out.println("cliente" + (i + 1) + ":" + cliente);
-			System.out.println("coche" + (i + 1) + ":" + coche);
+			// System.out.println("cliente" + (i + 1) + ":" + cliente);
+			// System.out.println("coche" + (i + 1) + ":" + coche);
 
 		}
 
@@ -50,7 +93,7 @@ public class GarageMain {
 
 		vehiculos.add(coche);
 
-		System.out.println("coche5:" + coche);
+		// System.out.println("coche5:" + coche);
 
 		// 30 plazas
 
@@ -58,16 +101,30 @@ public class GarageMain {
 
 			Plaza plaza = new Plaza();
 
-			plaza.setPrecio(0);
+			if (i < 10) {
+
+				plaza.setPrecio(50);
+
+			} else if (i < 20) {
+
+				plaza.setPrecio(75);
+
+			} else {
+
+				plaza.setPrecio(100);
+
+			}
+
+			plaza.setNumeroPlaza(i);
 			plazas.add(plaza);
 
 		}
 
 		for (int j = 0; j < clientes.size(); j++) {
 
-			Plaza plazaa = plazas.get(j);
+			Plaza plaza = plazas.get(j);
 
-			plazaa.setCliente(clientes.get(j));
+			plaza.setCliente(clientes.get(j));
 
 		}
 
@@ -75,7 +132,7 @@ public class GarageMain {
 
 			Plaza plaza = plazas.get(k);
 
-			System.out.println(plaza);
+			// System.out.println(plaza);
 
 		}
 
@@ -87,7 +144,9 @@ public class GarageMain {
 			garage.setPlazas(plazas);
 		}
 
-		System.out.println(garage);
+		// System.out.println(garage);
+
+		controlador = new ControladorGarageConArrays();
 
 	}
 
