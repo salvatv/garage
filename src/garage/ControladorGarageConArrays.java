@@ -123,7 +123,7 @@ public class ControladorGarageConArrays implements GarageController {
 
 			Plaza plaza = plazas.get(i);
 
-			if (plaza.getLibre()) {
+			if (plaza.getLibre()&& vehiculoCliente instanceof Aparcable) {
 				plaza.setCliente(cliente);
 				hayplaza = true;
 				return hayplaza;
