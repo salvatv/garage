@@ -22,13 +22,10 @@ public class ReservaDAOFileImp implements ReservaDAO {
 
 		buffer.newLine();
 
-		buffer.write(String.valueOf(reserva.getPlaza().getNumeroPlaza()));
-		buffer.write(";");
 		buffer.write(reserva.toTxt());
-		buffer.write(";");
 
 		buffer.close();
 
-	}	
+	}
 
 }
