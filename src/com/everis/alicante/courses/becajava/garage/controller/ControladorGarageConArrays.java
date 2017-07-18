@@ -155,6 +155,9 @@ public class ControladorGarageConArrays implements GarageController {
 			}
 
 		}
+
+		in.close();
+
 		return hayplaza;
 
 		// si hay plazas libres set cliente a la plaza

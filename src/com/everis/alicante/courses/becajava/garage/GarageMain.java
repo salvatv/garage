@@ -2,15 +2,15 @@ package com.everis.alicante.courses.becajava.garage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.everis.alicante.courses.becajava.garage.controller.ControladorGarageConArrays;
-import com.everis.alicante.courses.becajava.garage.domain.Cliente;
+//import com.everis.alicante.courses.becajava.garage.domain.Cliente;
 import com.everis.alicante.courses.becajava.garage.domain.Garage;
 import com.everis.alicante.courses.becajava.garage.domain.Plaza;
-import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
+//import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.GarageController;
 import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAO;
 import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAOFileImpl;
@@ -95,6 +95,8 @@ public class GarageMain {
 
 		iniciarAplicacion();
 
+		in.close();
+
 	}
 
 	private static void inicializarComponentes() throws FileNotFoundException, IOException {
@@ -105,32 +107,32 @@ public class GarageMain {
 
 		// inicializar los componentes de la app
 
-		List<Cliente> clientes = new ArrayList<>();
-		List<Vehiculo> vehiculos = new ArrayList<>();
+		// List<Cliente> clientes = new ArrayList<>();
+		// List<Vehiculo> vehiculos = new ArrayList<>();
 		// List<Plaza> plazas = new ArrayList<>();
 
 		// 4 clientes
 
-		for (int i = 0; i < 4; i++) {
+		// for (int i = 0; i < 4; i++) {
 
-			Cliente cliente = new Cliente();
-			Vehiculo coche = new Vehiculo();
+		// Cliente cliente = new Cliente();
+		// Vehiculo coche = new Vehiculo();
 
-			cliente.setNif("adsds" + i);
-			cliente.setNombreCliente("pepe" + i);
+		// cliente.setNif("adsds" + i);
+		// cliente.setNombreCliente("pepe" + i);
 
-			coche.setMatricula("1233" + i);
+		// coche.setMatricula("1233" + i);
 
-			vehiculos.add(coche);
+		// vehiculos.add(coche);
 
-			cliente.setVehiculo(coche);
+		// cliente.setVehiculo(coche);
 
-			clientes.add(cliente);
+		// clientes.add(cliente);
 
-			// System.out.println("cliente" + (i + 1) + ":" + cliente);
-			// System.out.println("coche" + (i + 1) + ":" + coche);
+		// System.out.println("cliente" + (i + 1) + ":" + cliente);
+		// System.out.println("coche" + (i + 1) + ":" + coche);
 
-		}
+		// }
 
 		// 4 vehiculos
 
@@ -169,21 +171,21 @@ public class GarageMain {
 
 		// }
 
-		for (int j = 0; j < clientes.size(); j++) {
+		// for (int j = 0; j < clientes.size(); j++) {
 
-			Plaza plaza = plazas.get(j);
+		// Plaza plaza = plazas.get(j);
 
-			plaza.setCliente(clientes.get(j));
+		// plaza.setCliente(clientes.get(j));
 
-		}
+		// }
 
-		for (int k = 0; k < plazas.size(); k++) {
+		// for (int k = 0; k < plazas.size(); k++) {
 
-			Plaza plaza = plazas.get(k);
+		// Plaza plaza = plazas.get(k);
 
-			// System.out.println(plaza);
+		// System.out.println(plaza);
 
-		}
+		// }
 
 		// 1 garage
 

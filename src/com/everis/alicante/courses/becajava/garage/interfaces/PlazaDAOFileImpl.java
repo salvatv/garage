@@ -15,7 +15,7 @@ public class PlazaDAOFileImpl implements PlazaDAO {
 	@Override
 	public List<Plaza> readPlazas() throws IOException {
 
-		List plazas = new ArrayList<Plaza>();
+		List<Plaza> plazas = new ArrayList<Plaza>();
 
 		String linea;
 

@@ -5,9 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.everis.alicante.courses.becajava.garage.domain.Cliente;
 import com.everis.alicante.courses.becajava.garage.domain.Reserva;
-import com.sun.security.ntlm.Client;
 
 public class ReservaDAOFileImp implements ReservaDAO {
 
