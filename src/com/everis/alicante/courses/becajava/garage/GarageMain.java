@@ -31,7 +31,7 @@ public class GarageMain {
 
 	}
 
-	private static void iniciarAplicacion() {
+	private static void iniciarAplicacion() throws IOException {
 
 		System.out.println("welcome");
 		System.out.println("1.- Listar plazas libres");

@@ -1,6 +1,8 @@
 package com.everis.alicante.courses.becajava.garage.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,9 +13,12 @@ import com.everis.alicante.courses.becajava.garage.domain.Coche;
 import com.everis.alicante.courses.becajava.garage.domain.Garage;
 import com.everis.alicante.courses.becajava.garage.domain.Moto;
 import com.everis.alicante.courses.becajava.garage.domain.Plaza;
+import com.everis.alicante.courses.becajava.garage.domain.Reserva;
 import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
 import com.everis.alicante.courses.becajava.garage.interfaces.GarageController;
+import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAO;
+import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAOFileImp;
 
 public class ControladorGarageConArrays implements GarageController {
 
@@ -71,13 +76,15 @@ public class ControladorGarageConArrays implements GarageController {
 	}
 
 	@Override
-	public boolean reservarPlaza() {
+	public boolean reservarPlaza() throws IOException {
 
 		boolean hayplaza = false;
 
 		// crear cliente
 
 		Cliente cliente = new Cliente();
+
+		ReservaDAO dao = new ReservaDAOFileImp();
 
 		// escribir menu datos cliente
 
@@ -134,9 +141,16 @@ public class ControladorGarageConArrays implements GarageController {
 
 			Plaza plaza = plazas.get(i);
 
-			if (plaza.getLibre()&& vehiculoCliente instanceof Aparcable) {
+			if (plaza.getLibre() && vehiculoCliente instanceof Aparcable) {
 				plaza.setCliente(cliente);
 				hayplaza = true;
+
+				Reserva reserva = new Reserva();
+				reserva.setCliente(cliente);
+				reserva.setPlaza(plaza);
+				reserva.setFechaReserva(Calendar.getInstance().getTime());
+				dao.saveReserva(reserva);
+
 				return hayplaza;
 			}
 
