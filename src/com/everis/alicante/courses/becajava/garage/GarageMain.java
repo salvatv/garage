@@ -1,8 +1,19 @@
-package garage;
+package com.everis.alicante.courses.becajava.garage;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import com.everis.alicante.courses.becajava.garage.controller.ControladorGarageConArrays;
+import com.everis.alicante.courses.becajava.garage.domain.Cliente;
+import com.everis.alicante.courses.becajava.garage.domain.Garage;
+import com.everis.alicante.courses.becajava.garage.domain.Plaza;
+import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
+import com.everis.alicante.courses.becajava.garage.interfaces.GarageController;
+import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAO;
+import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAOFileImpl;
 
 public class GarageMain {
 
@@ -10,7 +21,7 @@ public class GarageMain {
 
 	static Garage garage;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		inicializarComponentes();
 
@@ -86,15 +97,17 @@ public class GarageMain {
 
 	}
 
-	private static void inicializarComponentes() {
+	private static void inicializarComponentes() throws FileNotFoundException, IOException {
 
 		garage = new Garage();
+
+		PlazaDAO plazaDao = new PlazaDAOFileImpl();
 
 		// inicializar los componentes de la app
 
 		List<Cliente> clientes = new ArrayList<>();
 		List<Vehiculo> vehiculos = new ArrayList<>();
-		List<Plaza> plazas = new ArrayList<>();
+		// List<Plaza> plazas = new ArrayList<>();
 
 		// 4 clientes
 
@@ -131,28 +144,30 @@ public class GarageMain {
 
 		// 30 plazas
 
-		for (int i = 0; i < 30; i++) {
+		List<Plaza> plazas = plazaDao.readPlazas();
 
-			Plaza plaza = new Plaza();
+		// for (int i = 0; i < 30; i++) {
+		//
+		// Plaza plaza = new Plaza();
+		//
+		// if (i < 10) {
+		//
+		// plaza.setPrecio(50);
+		//
+		// } else if (i < 20) {
+		//
+		// plaza.setPrecio(75);
+		//
+		// } else {
+		//
+		// plaza.setPrecio(100);
+		//
+		// }
+		//
+		// plaza.setNumeroPlaza(i);
+		// plazas.add(plaza);
 
-			if (i < 10) {
-
-				plaza.setPrecio(50);
-
-			} else if (i < 20) {
-
-				plaza.setPrecio(75);
-
-			} else {
-
-				plaza.setPrecio(100);
-
-			}
-
-			plaza.setNumeroPlaza(i);
-			plazas.add(plaza);
-
-		}
+		// }
 
 		for (int j = 0; j < clientes.size(); j++) {
 

@@ -1,4 +1,6 @@
-package garage;
+package com.everis.alicante.courses.becajava.garage.domain;
+
+import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
 
 public class Moto extends Vehiculo implements Aparcable{
 	
