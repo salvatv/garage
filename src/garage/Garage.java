@@ -1,6 +1,5 @@
 package garage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Garage {
@@ -14,9 +13,6 @@ public class Garage {
 	public void setPlazas(List<Plaza> plazas) {
 		this.plazas = plazas;
 	}
-	
-	
-	
 
 	@Override
 	public String toString() {

@@ -1,7 +1,6 @@
 package garage;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,7 +34,7 @@ public class ControladorGarageConArrays implements GarageController {
 
 	@Override
 	public void listarPLazasOcupadas() {
-		
+
 		List<Plaza> plazasOcupadas = new ArrayList<Plaza>();
 
 		List<Plaza> plazas = GarageMain.getGarage().getPlazas();

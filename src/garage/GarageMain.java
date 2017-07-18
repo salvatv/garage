@@ -35,7 +35,7 @@ public class GarageMain {
 		Scanner in = new Scanner(System.in);
 
 		Integer opcion = in.nextInt();
-		
+
 		Boolean plazaa = false;
 
 		System.out.println("Ha elegido la opcion : " + opcion);
@@ -53,21 +53,21 @@ public class GarageMain {
 			break;
 		case 3:
 
-		//	controlador.listarPLazasOcupadas();
+			// controlador.listarPLazasOcupadas();
 
 			break;
 		case 4:
 
-		//	controlador.listarPLazasOcupadas();
+			// controlador.listarPLazasOcupadas();
 
 			break;
 		case 5:
 
-	//		controlador.listarPLazasOcupadas();
+			// controlador.listarPLazasOcupadas();
 
 			break;
-		case 6:			
-			
+		case 6:
+
 			plazaa = controlador.reservarPlaza();
 
 			break;
@@ -75,20 +75,19 @@ public class GarageMain {
 		default:
 			break;
 		}
-		
-		if(plazaa && opcion == 3) {
+
+		if (plazaa && opcion == 6) {
 			System.out.println("Se ha reservado su plaza.");
-		}
-		else if (opcion == 3 ){
+		} else if (opcion == 6) {
 			System.out.println("No hay plazas reservables.");
-		}		
-		
+		}
+
 		iniciarAplicacion();
 
 	}
 
 	private static void inicializarComponentes() {
-		
+
 		garage = new Garage();
 
 		// inicializar los componentes de la app
@@ -171,7 +170,7 @@ public class GarageMain {
 
 		}
 
-		// 1 garage		
+		// 1 garage
 
 		for (int i = 0; i < 1; i++) {
 			garage.setPlazas(plazas);
