@@ -3,9 +3,11 @@ package com.everis.alicante.courses.becajava.garage.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
-
 import com.everis.alicante.courses.becajava.garage.GarageMain;
 import com.everis.alicante.courses.becajava.garage.domain.Camion;
 import com.everis.alicante.courses.becajava.garage.domain.Cliente;
@@ -18,7 +20,7 @@ import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
 import com.everis.alicante.courses.becajava.garage.interfaces.GarageController;
 import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAO;
-import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAOFileImp;
+import com.everis.alicante.courses.becajava.garage.interfaces.impl.ReservaDAOFileImp;
 
 public class ControladorGarageConArrays implements GarageController {
 
@@ -146,9 +148,11 @@ public class ControladorGarageConArrays implements GarageController {
 				hayplaza = true;
 
 				Reserva reserva = new Reserva();
+
 				reserva.setCliente(cliente);
 				reserva.setPlaza(plaza);
 				reserva.setFechaReserva(Calendar.getInstance().getTime());
+
 				dao.saveReserva(reserva);
 
 				return hayplaza;
@@ -162,6 +166,56 @@ public class ControladorGarageConArrays implements GarageController {
 
 		// si hay plazas libres set cliente a la plaza
 
+	}
+
+	@Override
+	public void listarClientes() {
+
+		Map<String, Cliente> clientes = GarageMain.getGarage().getClientes();
+
+		Collection<Cliente> collection = clientes.values();
+
+		for (Iterator<Cliente> iterator = collection.iterator(); iterator.hasNext();) {
+			Cliente cliente = (Cliente) iterator.next();
+			System.out.println(cliente);
+		}
+
+		// System.out.println(clientes.keySet());
+		//
+		// System.out.println("---------------------------------");
+
+		// System.out.println(clientes.values());
+		//
+		// System.out.println("---------------------------------");
+		//
+		// clientes.values().contains("PEPE");
+		//
+		// Cliente cliente = clientes.get("56789");
+		//
+		// System.out.println(cliente);
+
+	}
+
+	@Override
+	public void listarReservas() throws IOException {
+		
+		ReservaDAO reservaDao = new ReservaDAOFileImp();
+		Map<String, Reserva> reservas = reservaDao.readReservas();
+		
+		Collection<Reserva> listaReservas = reservas.values();
+		
+		for (Reserva reserva : listaReservas) {
+			
+			System.out.println("num reserva: " + reserva.getPlaza().getNumeroPlaza());
+			System.out.println("cliente :" +reserva.getCliente().getNif());
+			System.out.println("matriculo :" +reserva.getCliente().getVehiculo().getMatricula());
+			System.out.println("tipo vehiculo :" +reserva.getCliente().getVehiculo().getTipoVehiculo());
+			
+			
+		}
+		
+		
+		
 	}
 
 }

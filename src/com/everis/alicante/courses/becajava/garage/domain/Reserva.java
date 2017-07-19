@@ -9,6 +9,9 @@ public class Reserva {
 	private Date fechaReserva;
 	private Date fechaInicio;
 	private Date fechaFin;
+	private String codigoReserva;
+
+//	private final String GUION = "-";
 
 	public Plaza getPlaza() {
 		return plaza;
@@ -50,16 +53,26 @@ public class Reserva {
 		this.fechaFin = fechaFin;
 	}
 
+	public String getCodigoReserva() {
+		return codigoReserva;
+	}
+
+	public void setCodigoReserva(String codigoReserva) {
+		this.codigoReserva = codigoReserva;
+	}
+
 	@Override
 	public String toString() {
-		return "Reserva [plaza=" + plaza + ", cliente=" + cliente + ", vehiculo=" + cliente.getVehiculo() + ", fechaReserva="
-				+ fechaReserva + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
+		return "Reserva [plaza=" + plaza + ", cliente=" + cliente + ", vehiculo=" + cliente.getVehiculo()
+				+ ", fechaReserva=" + fechaReserva + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
 	}
 
 	public String toTxt() {
 
 		String str = "";
 
+		str = str.concat(String.valueOf(this.getCodigoReserva()));
+		str = str.concat(";");
 		str = str.concat(String.valueOf(this.plaza.getNumeroPlaza()));
 		str = str.concat(";");
 		str = str.concat(this.cliente.getNif());

@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.becajava.garage.interfaces;
+package com.everis.alicante.courses.becajava.garage.interfaces.impl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,8 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.everis.alicante.courses.becajava.garage.domain.Plaza;
+import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAO;
 
 public class PlazaDAOFileImpl implements PlazaDAO {
 
