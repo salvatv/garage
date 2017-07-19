@@ -79,7 +79,7 @@ public class GarageMain {
 
 		case 7:
 
-			plazaa = controlador.listarReservas();
+			controlador.listarReservas();
 
 			break;
 
