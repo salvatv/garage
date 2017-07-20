@@ -11,6 +11,7 @@ import java.util.TreeMap;
 import com.everis.alicante.courses.becajava.garage.GarageMain;
 import com.everis.alicante.courses.becajava.garage.domain.Plaza;
 import com.everis.alicante.courses.becajava.garage.domain.Reserva;
+import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAO;
 import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAO;
 
 public class ReservaDAOFileImp implements ReservaDAO {
@@ -29,6 +30,8 @@ public class ReservaDAOFileImp implements ReservaDAO {
 		buffer.write(reserva.toTxt());
 
 		buffer.close();
+		
+		
 
 	}
 
@@ -36,6 +39,8 @@ public class ReservaDAOFileImp implements ReservaDAO {
 	public Map<String, Reserva> readReservas() throws IOException {
 
 		Map<String, Reserva> reservas = new TreeMap<String, Reserva>();
+		
+		PlazaDAO daoPlaza = new PlazaDAOFileImpl();
 
 		String linea;
 
@@ -53,11 +58,9 @@ public class ReservaDAOFileImp implements ReservaDAO {
 
 				String[] temp = linea.split(";");
 
-				reserva.setCodigoReserva(temp[0]);
+				reserva.setCodigoReserva(temp[0]);				
 
-				Plaza plaza = GarageMain.getGarage().getPlazas().get(Integer.parseInt(temp[1]));
-
-				reserva.setPlaza(plaza);
+				reserva.setPlaza(daoPlaza.readPlaza(Integer.parseInt(temp[1])));
 
 				reserva.setCliente(GarageMain.getGarage().getClientes().get(temp[2]));
 							

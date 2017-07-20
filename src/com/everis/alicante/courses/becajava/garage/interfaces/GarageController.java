@@ -7,7 +7,7 @@ public interface GarageController {
 	void listarPlazasLibres();
 	void listarPLazasOcupadas();
 	boolean reservarPlaza() throws IOException;
-	void listarClientes();
+	void listarClientes() throws IOException;
 	void listarReservas() throws IOException;
 	
 }

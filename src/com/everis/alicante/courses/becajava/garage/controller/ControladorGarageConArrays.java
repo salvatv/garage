@@ -18,9 +18,13 @@ import com.everis.alicante.courses.becajava.garage.domain.Plaza;
 import com.everis.alicante.courses.becajava.garage.domain.Reserva;
 import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
+import com.everis.alicante.courses.becajava.garage.interfaces.ClienteDAO;
 import com.everis.alicante.courses.becajava.garage.interfaces.GarageController;
 import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAO;
+import com.everis.alicante.courses.becajava.garage.interfaces.VehiculoDAO;
+import com.everis.alicante.courses.becajava.garage.interfaces.impl.ClienteDAOFileImpl;
 import com.everis.alicante.courses.becajava.garage.interfaces.impl.ReservaDAOFileImp;
+import com.everis.alicante.courses.becajava.garage.interfaces.impl.VehiculoDAOFileImpl;
 
 public class ControladorGarageConArrays implements GarageController {
 
@@ -86,7 +90,9 @@ public class ControladorGarageConArrays implements GarageController {
 
 		Cliente cliente = new Cliente();
 
-		ReservaDAO dao = new ReservaDAOFileImp();
+		ReservaDAO daoReserva = new ReservaDAOFileImp();
+		ClienteDAO daoCliente = new ClienteDAOFileImpl();
+		VehiculoDAO daoVehiculo = new VehiculoDAOFileImpl();
 
 		// escribir menu datos cliente
 
@@ -107,7 +113,7 @@ public class ControladorGarageConArrays implements GarageController {
 
 		String option = in.nextLine();
 
-		Vehiculo vehiculoCliente;
+		Vehiculo vehiculoCliente = new Vehiculo();
 
 		switch (option) {
 		case "1":
@@ -130,6 +136,7 @@ public class ControladorGarageConArrays implements GarageController {
 		System.out.print("Inserte la matrícula del vehículo: ");
 		String matricula = in.nextLine();
 		vehiculoCliente.setMatricula(matricula);
+		vehiculoCliente.setTipoVehiculo(vehiculoCliente.getClass().getSimpleName());
 
 		cliente.setVehiculo(vehiculoCliente);
 
@@ -152,8 +159,13 @@ public class ControladorGarageConArrays implements GarageController {
 				reserva.setCliente(cliente);
 				reserva.setPlaza(plaza);
 				reserva.setFechaReserva(Calendar.getInstance().getTime());
+				reserva.setCodigoReserva(String.valueOf(plaza.getNumeroPlaza()));
 
-				dao.saveReserva(reserva);
+				daoReserva.saveReserva(reserva);
+
+				daoCliente.createCliente(cliente);
+
+				daoVehiculo.createVehiculo(vehiculoCliente);
 
 				return hayplaza;
 			}
@@ -169,53 +181,39 @@ public class ControladorGarageConArrays implements GarageController {
 	}
 
 	@Override
-	public void listarClientes() {
+	public void listarClientes() throws IOException {
 
-		Map<String, Cliente> clientes = GarageMain.getGarage().getClientes();
+		ClienteDAO daoCliente = new ClienteDAOFileImpl();
+
+		Map<String, Cliente> clientes = daoCliente.readClientes();
 
 		Collection<Cliente> collection = clientes.values();
 
 		for (Iterator<Cliente> iterator = collection.iterator(); iterator.hasNext();) {
 			Cliente cliente = (Cliente) iterator.next();
-			System.out.println(cliente);
+			System.out.println(cliente.getNombreCliente());
+			System.out.println("-------------------------------------------------");
 		}
-
-		// System.out.println(clientes.keySet());
-		//
-		// System.out.println("---------------------------------");
-
-		// System.out.println(clientes.values());
-		//
-		// System.out.println("---------------------------------");
-		//
-		// clientes.values().contains("PEPE");
-		//
-		// Cliente cliente = clientes.get("56789");
-		//
-		// System.out.println(cliente);
 
 	}
 
 	@Override
 	public void listarReservas() throws IOException {
-		
+
 		ReservaDAO reservaDao = new ReservaDAOFileImp();
 		Map<String, Reserva> reservas = reservaDao.readReservas();
-		
+
 		Collection<Reserva> listaReservas = reservas.values();
-		
+
 		for (Reserva reserva : listaReservas) {
-			
+
 			System.out.println("num reserva: " + reserva.getPlaza().getNumeroPlaza());
-			System.out.println("cliente :" +reserva.getCliente().getNif());
-			System.out.println("matriculo :" +reserva.getCliente().getVehiculo().getMatricula());
-			System.out.println("tipo vehiculo :" +reserva.getCliente().getVehiculo().getTipoVehiculo());
-			
-			
+			System.out.println("cliente :" + reserva.getCliente().getNif());
+			System.out.println("matriculo :" + reserva.getCliente().getVehiculo().getMatricula());
+			System.out.println("tipo vehiculo :" + reserva.getCliente().getVehiculo().getTipoVehiculo());
+
 		}
-		
-		
-		
+
 	}
 
 }

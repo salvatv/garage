@@ -31,12 +31,12 @@ public class PlazaDAOFileImpl implements PlazaDAO {
 				System.out.println(linea);
 
 				Plaza plazaTemp = new Plaza();
-				
+
 				String[] temp = linea.split(";");
-				
+
 				plazaTemp.setNumeroPlaza(Integer.parseInt(temp[0]));
-				
-				plazaTemp.setPrecio(Double.parseDouble(temp[1]));				
+
+				plazaTemp.setPrecio(Double.parseDouble(temp[1]));
 
 				plazas.add(plazaTemp);
 			}
@@ -60,6 +60,50 @@ public class PlazaDAOFileImpl implements PlazaDAO {
 		PlazaDAO dao = new PlazaDAOFileImpl();
 
 		dao.readPlazas();
+
+	}
+
+	@Override
+	public Plaza readPlaza(int numeroPlaza) throws IOException {
+
+		String linea;
+		Plaza plazaTemp = null;
+
+		File file = new File("src/resources/Plazas.txt");
+
+		FileReader reader = new FileReader(file);
+
+		BufferedReader buffer = new BufferedReader(reader);
+
+		while ((linea = buffer.readLine()) != null) {
+
+			if (!linea.contains("NUMERO_PLAZA")) {
+
+				String[] temp = linea.split(";");
+
+				if (numeroPlaza == Integer.valueOf(temp[0])) {
+
+					plazaTemp = new Plaza();
+
+					plazaTemp.setNumeroPlaza(Integer.parseInt(temp[0]));
+
+					plazaTemp.setPrecio(Double.parseDouble(temp[1]));
+
+				}
+
+			}
+
+		}
+
+		reader.close();
+
+		return plazaTemp;
+
+	}
+
+	@Override
+	public void deletePlaza(int numeroPlaza) {
+		// TODO Auto-generated method stub
 
 	}
 

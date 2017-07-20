@@ -103,107 +103,17 @@ public class GarageMain {
 
 		garage = new Garage();
 
-		PlazaDAO plazaDao = new PlazaDAOFileImpl();
-		ReservaDAO reservaDao = new ReservaDAOFileImp();
-		ClienteDAO clienteDao = new ClienteDAOFileImpl();
-		VehiculoDAO vehiculoDao = new VehiculoDAOFileImpl();
+		// PlazaDAO plazaDao = new PlazaDAOFileImpl();
+		// ReservaDAO reservaDao = new ReservaDAOFileImp();
+		// ClienteDAO clienteDao = new ClienteDAOFileImpl();
+		// VehiculoDAO vehiculoDao = new VehiculoDAOFileImpl();
 
-		garage.setPlazas(plazaDao.readPlazas());
-		garage.setClientes(clienteDao.readClientes());
-		garage.setVehiculos(vehiculoDao.readVehiculos());
-		garage.setReservas(reservaDao.readReservas());
+		// garage.setPlazas(plazaDao.readPlazas());
+		// garage.setClientes(clienteDao.readClientes());
+		// garage.setVehiculos(vehiculoDao.readVehiculos());
+		// garage.setReservas(reservaDao.readReservas());
 
 		controlador = new ControladorGarageConArrays();
-
-		// List<Plaza> plazas = plazaDao.readPlazas();
-
-		// inicializar los componentes de la app
-
-		// List<Cliente> clientes = new ArrayList<>();
-		// List<Vehiculo> vehiculos = new ArrayList<>();
-		// List<Plaza> plazas = new ArrayList<>();
-
-		// 4 clientes
-
-		// for (int i = 0; i < 4; i++) {
-
-		// Cliente cliente = new Cliente();
-		// Vehiculo coche = new Vehiculo();
-
-		// cliente.setNif("adsds" + i);
-		// cliente.setNombreCliente("pepe" + i);
-
-		// coche.setMatricula("1233" + i);
-
-		// vehiculos.add(coche);
-
-		// cliente.setVehiculo(coche);
-
-		// clientes.add(cliente);
-
-		// System.out.println("cliente" + (i + 1) + ":" + cliente);
-		// System.out.println("coche" + (i + 1) + ":" + coche);
-
-		// }
-
-		// 4 vehiculos
-
-		// Vehiculo coche = new Vehiculo();
-
-		// coche.setMatricula("12334");
-
-		// vehiculos.add(coche);
-
-		// System.out.println("coche5:" + coche);
-
-		// 30 plazas
-
-		// for (int i = 0; i < 30; i++) {
-		//
-		// Plaza plaza = new Plaza();
-		//
-		// if (i < 10) {
-		//
-		// plaza.setPrecio(50);
-		//
-		// } else if (i < 20) {
-		//
-		// plaza.setPrecio(75);
-		//
-		// } else {
-		//
-		// plaza.setPrecio(100);
-		//
-		// }
-		//
-		// plaza.setNumeroPlaza(i);
-		// plazas.add(plaza);
-
-		// }
-
-		// for (int j = 0; j < clientes.size(); j++) {
-
-		// Plaza plaza = plazas.get(j);
-
-		// plaza.setCliente(clientes.get(j));
-
-		// }
-
-		// for (int k = 0; k < plazas.size(); k++) {
-
-		// Plaza plaza = plazas.get(k);
-
-		// System.out.println(plaza);
-
-		// }
-
-		// 1 garage
-
-		// for (int i = 0; i < 1; i++) {
-		// garage.setPlazas(plazas);
-		// }
-
-		// System.out.println(garage);
 
 	}
 
